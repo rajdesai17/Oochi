@@ -1,41 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 function Eyes() {
-    const [rotate , setRotate] = useState(0)
-    useEffect(() => {
-        window.addEventListener("mousemove" , (e) => {
-            let mouseX = e.clientX ;
-            let mouseY = e.clientY ;
+  const [rotate, setRotate] = useState(0);
 
-            let deltaX = mouseX - window.innerWidth/2;
-            let deltaY = mouseY - window.innerHeight/2;
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      let mouseX = e.clientX;
+      let mouseY = e.clientY;
+      
+      let deltaX = mouseX - window.innerWidth/2;
+      let deltaY = mouseY - window.innerHeight/2;
+      
+      let angle = Math.atan2(deltaY, deltaX) * (180/Math.PI);
+      setRotate(angle-180);
+    };
 
-            var angle = Math.atan2(deltaX,deltaY)*(180/Math.PI);
-            setRotate(angle-180);
-        })
-    })
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <div className='eyes w-full h-screen overflow-hidden'>
-      <div data-scroll data-scroll-speed="-.6" className='relative w-full h-full bg-cover bg-center bg-[url(https://ochi.design/wp-content/uploads/2022/05/Top-Viewbbcbv-1-1440x921.jpg)]'>
-        <div className='absolute flex justify-between items-center gap-5 left-1/2 top-1/2 -translate-x-[50%] -translate-y-[50%]'>
-        <div className='h-[15vw] w-[15vw] rounded-full bg-white flex justify-center items-center'>
-                <div className='relative bg-black h-2/3 w-2/3 rounded-full '>
-                    <div style={{transform : `translate(-50% , -50%) rotate(${rotate}deg)`}} className='line h-6 w-full absolute left-1/2 top-1/2 -translate-x-[50%] -translate-y-[50%] '>
-                        <div className='bg-zinc-200 h-6 w-6 rounded-full'></div>
-                    </div>
-                </div>
+    <div className='w-full h-[50vh] md:h-screen overflow-hidden'>
+      <div data-scroll data-scroll-speed="-.6" className='w-full h-full bg-cover bg-center relative'>
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row gap-8 md:gap-5'>
+          {[1, 2].map((item) => (
+            <div key={item} className='h-[30vw] w-[30vw] md:h-[15vw] md:w-[15vw] bg-white rounded-full flex items-center justify-center'>
+              <div className='relative w-2/3 h-2/3 bg-black rounded-full'>
+                <motion.div 
+                  style={{ transform: `rotate(${rotate}deg)` }}
+                  className='line absolute w-full h-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+                >
+                  <div className='w-6 h-6 bg-zinc-100 rounded-full' />
+                </motion.div>
+              </div>
             </div>
-            <div className='h-[15vw] w-[15vw] rounded-full bg-white flex justify-center items-center'>
-                <div className='relative bg-black h-2/3 w-2/3 rounded-full '>
-                    <div style={{transform : `translate(-50% , -50%) rotate(${rotate}deg)`}} className='line h-6 w-full absolute left-1/2 top-1/2 -translate-x-[50%] -translate-y-[50%]'>
-                        <div className='bg-zinc-200 h-6 w-6 rounded-full'></div>
-                    </div>
-                </div>
-            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Eyes
+export default Eyes;

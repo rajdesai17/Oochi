@@ -1,24 +1,44 @@
-import React from 'react'
-
 function Cards() {
   return (
-    <div className='w-full h-screen bg-zinc-400 flex justify-center items-center gap-10 p-20 '>
-      <div className='card-container relative w-1/2 h-[50vh] bg-[#004D43] rounded-xl flex justify-center items-center'>
-        <img src='https://ochi.design/wp-content/uploads/2022/04/logo001.svg'></img>
-        <button className='absolute ml-8 w-32 left-0 bottom-10 border-2 border-[#CDEA68] text-[#CDEA68] rounded-2xl text-sm px-2 py-1 font-semibold'>2019-2020</button>
+    <div className='w-full bg-zinc-400 flex flex-col md:flex-row gap-4 p-4 md:p-20'>
+      {/* Main Card */}
+      <div className='w-full md:w-1/2 h-[30vh] md:h-[50vh] bg-[#004D43] rounded-xl relative flex items-center justify-center'>
+        <img 
+          src='https://ochi.design/wp-content/uploads/2022/04/logo001.svg' 
+          className='w-20 md:w-32'
+          alt='OCHI Logo'
+        />
+        <button className='absolute bottom-4 left-4 text-xs md:text-sm px-3 py-1 border-2 border-[#CDEA68] text-[#CDEA68] rounded-2xl'>
+          2019-2020
+        </button>
       </div>
-      <div className='card-container w-1/2 h-[50vh] flex gap-10'>
-        <div className='relative h-full w-1/2 bg-[#212121] rounded-xl flex justify-center items-center'>
-            <img src='https://ochi.design/wp-content/uploads/2022/04/logo002.svg'></img>
-            <button className='absolute ml-8 left-0 bottom-10 border-2 border-[#dbdcd7] text-[#fbfcf7] rounded-2xl text-sm px-2 py-1 font-semibold'>RATING 5.0 ON CLUTCH</button>
+
+      {/* Side Cards */}
+      <div className='w-full md:w-1/2 flex flex-col gap-4'>
+        <div className='w-full h-[30vh] md:h-[24vh] bg-zinc-900 rounded-xl relative flex items-center justify-center'>
+          <img 
+            src='https://ochi.design/wp-content/uploads/2022/04/logo002.svg' 
+            className='w-20 md:w-24'
+            alt='Clutch Logo'
+          />
+          <button className='absolute bottom-4 left-4 text-xs md:text-sm px-3 py-1 border-2 border-zinc-200 text-zinc-200 rounded-2xl'>
+            RATING 5.0 ON CLUTCH
+          </button>
         </div>
-        <div className='relative h-full w-1/2 bg-[#212121] rounded-xl flex justify-center items-center'>
-            <img className='h-32 w-32' src='https://ochi.design/wp-content/uploads/2022/04/logo003.png'></img>
-            <button className='absolute ml-8 left-0 bottom-10 border-2 border-[#e3e4df] text-[#f9faf7] rounded-2xl text-sm px-2 py-1 font-semibold'>BUSINESS BOOTCAMP ALUMNI</button>
+
+        <div className='w-full h-[30vh] md:h-[24vh] bg-zinc-900 rounded-xl relative flex items-center justify-center'>
+          <img 
+            src='https://ochi.design/wp-content/uploads/2022/04/logo003.png' 
+            className='w-20 md:w-24'
+            alt='Business Bootcamp'
+          />
+          <button className='absolute bottom-4 left-4 text-xs md:text-sm px-3 py-1 border-2 border-zinc-200 text-zinc-200 rounded-2xl'>
+            BUSINESS BOOTCAMP ALUMNI
+          </button>
         </div>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Cards
+export default Cards;

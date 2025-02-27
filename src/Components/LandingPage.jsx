@@ -1,53 +1,47 @@
 import { motion } from 'framer-motion';
-import React from 'react'
 import { RiArrowRightUpLine } from "react-icons/ri";
 
-function landingPage() {
-
+function LandingPage() {
   return (
-    <div  data-scroll data-scroll-section data-scroll-speed=".3" className='h-screen w-full pt-1'>
-        <div className='textstructure px-20 mt-52'>
-            {["We Create" , "Eye-Opening" , "Presentations"].map((item , index)=>(
-                // eslint-disable-next-line react/jsx-key
-                <div className='masker'>
-                    <div className='flex w-fit items-end'>
-                        {index === 1 && (
-                            <motion.div 
-                                initial={{width : 0}} 
-                                animate = {{width : "10vw"}} 
-                                transition={"ease : [0.76, 0, 0.24, 1]"}
-                                className='mr-[1vw] w-[8vw] h-[5.7vw] top-1 relative bg-green-800 rounded-md '>
-                            </motion.div>
-                                
-                        )}
-                        <h1 className='uppercase text-8xl leading-[5.5vw] tracking-tighter font-["Founders Grotesk"] font-bold'>
-                        {item}
-                    </h1>
-                    </div>
-                </div>
-                
-            ))}
-            
-
-        </div>
-        <div className='border-t-2 bg-zinc mt-32 flex items-center justify-between px-20 py-3'>
-            {["For Public and Private Companies" , "From the First Pitch to IPO"].map((item,index)=>(
-                <p className='font-md font-light tracking-tight leading-none'>{item}</p>
-            ))}
-            <div className='start flex gap-3 items-center'>
-                <div className='px-3 py-2 border-2 border-black rounded-full'>
-                    Start the Project
-                </div>
-                <div className='border-2 border-black py-2 px-2 rounded-full '>
-                    <RiArrowRightUpLine/>
-                </div>
+    <div data-scroll data-scroll-section data-scroll-speed=".3" className='h-screen w-full pt-16 md:pt-1'>
+      <div className='textstructure px-4 md:px-20 mt-10 md:mt-52'>
+        {["We Create", "Eye-Opening", "Presentations"].map((item, index) => (
+          <div key={index} className='masker overflow-hidden'>
+            <div className='flex items-end'>
+              {index === 1 && (
+                <motion.div
+                  className='mr-[1vw] w-[8vw] h-[5.7vw] hidden md:block bg-green-800 rounded-md'
+                  initial={{ width: 0 }}
+                  animate={{ width: "8vw" }}
+                  transition={{ duration: 0.8 }}
+                />
+              )}
+              <h1 className='uppercase text-4xl md:text-6xl lg:text-8xl leading-[1.1] md:leading-[5.5vw] tracking-tighter font-bold'>
+                {item}
+              </h1>
             </div>
-            
-        </div>
+          </div>
+        ))}
+      </div>
+
+      <div className='border-t-2 mt-10 md:mt-32 flex flex-col md:flex-row gap-4 md:gap-0 px-4 md:px-20 py-3'>
+        {["For Public and Private Companies", "From the First Pitch to IPO"].map((item, index) => (
+          <p key={index} className='text-sm md:text-md font-light leading-none'>
+            {item}
+          </p>
+        ))}
         
-      
+        <div className='start flex gap-3 items-center md:ml-auto'>
+          <div className='px-3 py-2 border-2 border-black rounded-full text-sm md:text-md'>
+            Start the Project
+          </div>
+          <div className='border-2 border-black p-2 rounded-full'>
+            <RiArrowRightUpLine className='w-4 h-4 md:w-6 md:h-6'/>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default landingPage
+export default LandingPage;
