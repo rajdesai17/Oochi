@@ -22,7 +22,7 @@ function Eyes() {
 
   return (
     <div className='w-full h-[50vh] md:h-screen overflow-hidden'>
-      <div data-scroll data-scroll-speed="-.6" className='bg-green-200 w-80 h-90 bg-cover bg-center relative'>
+      <div data-scroll data-scroll-speed="-.6" className='bg-green-200 w-full h-full bg-cover bg-center relative'>
         <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row gap-8 md:gap-5'>
           {[1, 2].map((item) => (
             <div key={item} className='h-[30vw] w-[30vw] md:h-[15vw] md:w-[15vw] bg-white rounded-full flex items-center justify-center'>
