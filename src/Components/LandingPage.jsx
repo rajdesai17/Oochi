@@ -36,14 +36,14 @@ function LandingPage() {
         
         <div className='start flex gap-3 items-center md:ml-auto'>
           <div 
-            className={`px-3 py-2 border-2 border-black text-sm md:text-md transition-all duration-300 ease-out ${isButtonHovered ? 'rounded-none' : 'rounded-full'}`}
+            className={`cursor-hover px-3 py-2 border-2 border-black text-sm md:text-md transition-all duration-300 ease-out ${isButtonHovered ? 'rounded-none' : 'rounded-full'}`}
             onMouseEnter={() => setIsButtonHovered(true)}
             onMouseLeave={() => setIsButtonHovered(false)}
           >
             Start the Project
           </div>
           <div 
-            className='border-2 border-black p-2 rounded-full'
+            className='cursor-hover border-2 border-black p-2 rounded-full'
             onMouseEnter={() => setIsArrowHovered(true)}
             onMouseLeave={() => setIsArrowHovered(false)}
           >
