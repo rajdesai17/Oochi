@@ -32,14 +32,16 @@ function About() {
       <div className='flex flex-col md:flex-row gap-8 pt-8 md:pt-20'>
         <div className='w-full md:w-1/2'>
           <h1 className='text-3xl md:text-6xl mb-6 md:mb-10'><span className='font-bold'>Our Approach</span></h1>
-          <button 
-            className={`px-6 py-4 md:px-10 md:py-6 bg-zinc-900 text-white flex items-center gap-3 transition-all duration-300 ease-out ${isButtonHovered ? 'rounded-none' : 'rounded-full'}`}
+          <motion.button 
+            className='px-6 py-4 md:px-10 md:py-6 bg-zinc-900 text-white flex items-center gap-3'
+            animate={{ borderRadius: isButtonHovered ? '0px' : '9999px' }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             onMouseEnter={() => setIsButtonHovered(true)}
             onMouseLeave={() => setIsButtonHovered(false)}
           >
             Read More
             <div className='w-2 h-2 bg-white rounded-full' />
-          </button>
+          </motion.button>
         </div>
         <div className='w-full md:w-1/2 h-[40vh] md:h-[70vh] rounded-xl overflow-hidden'>
           <img 

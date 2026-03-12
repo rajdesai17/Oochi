@@ -76,13 +76,15 @@ function LandingPage() {
         ))}
         
         <div className='start flex gap-3 items-center md:ml-auto'>
-          <div 
-            className={`cursor-hover px-3 py-2 border-2 border-black text-sm md:text-md transition-all duration-300 ease-out ${isButtonHovered ? 'rounded-none' : 'rounded-full'}`}
+          <motion.div 
+            className='cursor-hover px-3 py-2 border-2 border-black text-sm md:text-md'
+            animate={{ borderRadius: isButtonHovered ? '0px' : '9999px' }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             onMouseEnter={() => setIsButtonHovered(true)}
             onMouseLeave={() => setIsButtonHovered(false)}
           >
             Start the Project
-          </div>
+          </motion.div>
           <div 
             className='cursor-hover border-2 border-black p-2 rounded-full'
             onMouseEnter={() => setIsArrowHovered(true)}
