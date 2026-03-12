@@ -13,11 +13,17 @@ function LandingPage() {
             <div className='flex items-end'>
               {index === 1 && (
                 <motion.div
-                  className='mr-[1vw] w-[8vw] h-[5.7vw] hidden md:block bg-green-800 rounded-md'
+                  className='mr-[1vw] w-[8vw] h-[5.7vw] hidden md:block rounded-md overflow-hidden'
                   initial={{ width: 0 }}
                   animate={{ width: "8vw" }}
                   transition={{ duration: 0.8 }}
-                />
+                >
+                  <img 
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" 
+                    alt="Team collaboration" 
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
               )}
               <h1 className='uppercase text-4xl md:text-6xl lg:text-8xl leading-[1.1] md:leading-[5.5vw] tracking-tighter font-bold'>
                 {item}
