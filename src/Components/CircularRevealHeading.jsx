@@ -10,7 +10,7 @@ const sizeConfig = {
         radius: 80,
         gap: 40,
         imageSize: 'w-[75%] h-[75%]',
-        textStyle: 'font-medium'
+        textStyle: 'font-montserrat font-semibold'
     },
     md: {
         container: 'h-[280px] w-[280px]',
@@ -19,7 +19,7 @@ const sizeConfig = {
         radius: 110,
         gap: 30,
         imageSize: 'w-[75%] h-[75%]',
-        textStyle: 'font-medium',
+        textStyle: 'font-montserrat font-semibold',
     },
     lg: {
         container: 'h-[400px] w-[400px]',
@@ -28,7 +28,7 @@ const sizeConfig = {
         radius: 160,
         gap: 20,
         imageSize: 'w-[75%] h-[75%]',
-        textStyle: 'font-medium'
+        textStyle: 'font-montserrat font-semibold'
     }
 };
 
@@ -181,7 +181,7 @@ export const CircularRevealHeading = ({
                                 exit={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.3 }}
-                                className="relative z-10 p-4 rounded-2xl bg-[#f5f5f5]"
+                                className="relative z-10 p-4 rounded-2xl bg-[#f5f5f5] font-poppins"
                                 whileHover={{
                                     boxShadow: "inset 2px 2px 4px #e0e0e0, inset -2px -2px 4px #ffffff"
                                 }}
