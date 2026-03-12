@@ -12,11 +12,11 @@ function Feature() {
           "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=1600&fit=crop&q=80",
           "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=1600&fit=crop&q=80"
         ].map((image, index) => (
-          <div key={index} className='w-full md:w-1/2 h-[40vh] md:h-[80vh] rounded-lg overflow-hidden'>
+          <div key={index} className='group w-full md:w-1/2 h-[40vh] md:h-[80vh] rounded-lg overflow-hidden'>
             <img 
               src={image} 
               alt={`Featured project ${index + 1}`}
-              className='w-full h-full object-cover hover:scale-105 transition-transform duration-300'
+              className='w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out'
             />
           </div>
         ))}
