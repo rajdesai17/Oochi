@@ -8,6 +8,7 @@ import Eyes from './Components/Eyes'
 import Feature from './Components/Feature'
 import Cards from './Components/Cards'
 import Footer from './Components/Footer'
+import CustomCursor from './Components/CustomCursor'
 import LocomotiveScroll from 'locomotive-scroll';
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
 const locomotiveScroll = new LocomotiveScroll();
   return (
     <div>
+      <CustomCursor />
       <Navbar/>
       <LandingPage/>
       <Marquee/>
