@@ -5,6 +5,7 @@ import LandingPage from './Components/LandingPage'
 import Marquee from './Components/Marquee'
 import About from './Components/About'
 import Eyes from './Components/Eyes'
+import Services from './Components/Services'
 import Feature from './Components/Feature'
 import Cards from './Components/Cards'
 import Footer from './Components/Footer'
@@ -22,6 +23,7 @@ const locomotiveScroll = new LocomotiveScroll();
       <Marquee/>
       <About/>
       <Eyes/>
+      <Services/>
       <Feature/>
       <Cards/>
       <Footer/>
