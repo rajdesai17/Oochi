@@ -1,13 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const cursorRef = useRef(null);
+  const cursorTrailRef = useRef(null);
+  const isHoveringRef = useRef(false);
 
   useEffect(() => {
+    const cursor = cursorRef.current;
+    const cursorTrail = cursorTrailRef.current;
+
+    if (!cursor || !cursorTrail) return;
+
+    // Set initial position off-screen
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+    gsap.set(cursorTrail, { xPercent: -50, yPercent: -50 });
+
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      const { clientX, clientY } = e;
+
+      // Smooth cursor follow with GSAP
+      gsap.to(cursor, {
+        x: clientX,
+        y: clientY,
+        duration: 0.15,
+        ease: 'power2.out',
+      });
+
+      // Trail follows with more delay for smooth effect
+      gsap.to(cursorTrail, {
+        x: clientX,
+        y: clientY,
+        duration: 0.4,
+        ease: 'power2.out',
+      });
     };
 
     const handleMouseOver = (e) => {
@@ -20,7 +46,26 @@ function CustomCursor() {
         target.classList.contains('cursor-hover') ||
         target.closest('.cursor-hover')
       ) {
-        setIsHovering(true);
+        if (!isHoveringRef.current) {
+          isHoveringRef.current = true;
+          
+          // Animate to hover state
+          gsap.to(cursor, {
+            width: 40,
+            height: 40,
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+
+          gsap.to(cursorTrail, {
+            opacity: 0,
+            scale: 1.5,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        }
       }
     };
 
@@ -34,7 +79,24 @@ function CustomCursor() {
         target.classList.contains('cursor-hover') ||
         target.closest('.cursor-hover')
       ) {
-        setIsHovering(false);
+        isHoveringRef.current = false;
+        
+        // Animate back to default state
+        gsap.to(cursor, {
+          width: 12,
+          height: 12,
+          backgroundColor: '#000000',
+          borderWidth: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+
+        gsap.to(cursorTrail, {
+          opacity: 0.5,
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
       }
     };
 
@@ -52,44 +114,26 @@ function CustomCursor() {
   return (
     <>
       {/* Main cursor dot */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        animate={{
-          x: mousePosition.x - (isHovering ? 20 : 6),
-          y: mousePosition.y - (isHovering ? 20 : 6),
-          width: isHovering ? 40 : 12,
-          height: isHovering ? 40 : 12,
-          backgroundColor: isHovering ? 'transparent' : '#000000',
-          borderWidth: isHovering ? 2 : 0,
-          borderColor: '#000000',
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
-        }}
+      <div
+        ref={cursorRef}
+        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full"
         style={{
-          borderRadius: '50%',
+          width: 12,
+          height: 12,
+          backgroundColor: '#000000',
           borderStyle: 'solid',
+          borderWidth: 0,
+          borderColor: '#000000',
         }}
       />
       {/* Cursor trail/outer ring */}
-      <motion.div
+      <div
+        ref={cursorTrailRef}
         className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full border border-black/30"
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
+        style={{
           width: 40,
           height: 40,
-          opacity: isHovering ? 0 : 0.5,
-          scale: isHovering ? 1.5 : 1,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1,
+          opacity: 0.5,
         }}
       />
     </>
