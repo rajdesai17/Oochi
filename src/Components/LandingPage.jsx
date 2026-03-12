@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { RiArrowRightUpLine, RiArrowRightDownLine } from "react-icons/ri";
 
 function LandingPage() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [isArrowHovered, setIsArrowHovered] = useState(false);
   return (
     <div data-scroll data-scroll-section data-scroll-speed=".3" className='h-screen w-full pt-16 md:pt-1'>
       <div className='textstructure px-4 md:px-20 mt-10 md:mt-52'>
@@ -33,25 +34,29 @@ function LandingPage() {
           </p>
         ))}
         
-        <div 
-          className='start flex gap-3 items-center md:ml-auto'
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div className={`px-3 py-2 border-2 border-black text-sm md:text-md transition-all duration-300 ease-out ${isHovered ? 'rounded-none' : 'rounded-full'}`}>
+        <div className='start flex gap-3 items-center md:ml-auto'>
+          <div 
+            className={`px-3 py-2 border-2 border-black text-sm md:text-md transition-all duration-300 ease-out ${isButtonHovered ? 'rounded-none' : 'rounded-full'}`}
+            onMouseEnter={() => setIsButtonHovered(true)}
+            onMouseLeave={() => setIsButtonHovered(false)}
+          >
             Start the Project
           </div>
-          <div className={`border-2 border-black p-2 transition-all duration-300 ease-out ${isHovered ? 'rounded-none' : 'rounded-full'}`}>
+          <div 
+            className='border-2 border-black p-2 rounded-full'
+            onMouseEnter={() => setIsArrowHovered(true)}
+            onMouseLeave={() => setIsArrowHovered(false)}
+          >
             <div className="relative w-4 h-4 md:w-6 md:h-6 overflow-hidden">
               <motion.div
-                animate={{ y: isHovered ? '-100%' : '0%' }}
+                animate={{ y: isArrowHovered ? '-100%' : '0%' }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
                 className="absolute inset-0 flex items-center justify-center"
               >
                 <RiArrowRightUpLine className='w-4 h-4 md:w-6 md:h-6'/>
               </motion.div>
               <motion.div
-                animate={{ y: isHovered ? '0%' : '100%' }}
+                animate={{ y: isArrowHovered ? '0%' : '100%' }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
                 className="absolute inset-0 flex items-center justify-center"
               >
