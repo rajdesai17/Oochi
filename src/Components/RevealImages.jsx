@@ -76,7 +76,9 @@ function RevealImageList() {
     <div className="flex flex-col gap-1 rounded-sm bg-zinc-100 px-8 py-4">
       <h3 className="text-sm font-black uppercase text-zinc-500 font-montserrat tracking-wider">Our Services</h3>
       {items.map((item, index) => (
-        <RevealImageListItem key={index} text={item.text} images={item.images} />
+        <div key={index} className={index < items.length - 1 ? 'border-b border-zinc-300' : ''}>
+          <RevealImageListItem text={item.text} images={item.images} />
+        </div>
       ))}
     </div>
   );
